@@ -28,12 +28,15 @@ What does it do?
 | CPython 3.7     | ✅ |   | ✅  | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
 | CPython 3.8     | ✅ |   | ✅  | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
 | CPython 3.9     | ✅ | ✅ | ✅  | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
+| CPython 3.10¹     | ✅ | ✅ | ✅  | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
 | PyPy 3.7 v7.3   | ✅ |   | ✅  |    | ✅ |    |    |    |   |
+<sup>¹ Requires `--pre` flag to be passed - Python Beta candidates not recommended for upload to PyPI. </sup><br>
 
 - Builds manylinux, macOS 10.9+, and Windows wheels for CPython and PyPy
 - Works on GitHub Actions, Azure Pipelines, Travis CI, AppVeyor, CircleCI, and GitLab CI
 - Bundles shared library dependencies on Linux and macOS through [auditwheel](https://github.com/pypa/auditwheel) and [delocate](https://github.com/matthew-brett/delocate)
 - Runs your library's tests against the wheel-installed version of your library
+
 
 See the [cibuildwheel 1 documentation](https://cibuildwheel.readthedocs.io/en/1.x/) if you need to build unsupported versions of Python, such as Python 2.
 
