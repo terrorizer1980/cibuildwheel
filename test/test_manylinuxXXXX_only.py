@@ -66,8 +66,8 @@ def test(manylinux_image, tmp_path):
         "CIBW_MANYLINUX_S390X_IMAGE": manylinux_image,
     }
     if manylinux_image in {"manylinux1"}:
-        # We don't have a manylinux1 image for PyPy & CPython 3.10
-        add_env["CIBW_SKIP"] = "pp* cp310-*"
+        # We don't have a manylinux1 image for PyPy & CPython 3.10 and above
+        add_env["CIBW_SKIP"] = "pp* cp31*"
     if manylinux_image in {"manylinux2014", "manylinux_2_24"}:
         # We don't have a manylinux2014 / manylinux_2_24 image for PyPy (yet?)
         add_env["CIBW_SKIP"] = "pp*"
@@ -83,7 +83,8 @@ def test(manylinux_image, tmp_path):
         "spam", "0.1.0", manylinux_versions=platform_tag_map.get(manylinux_image, [manylinux_image])
     )
     if manylinux_image in {"manylinux1"}:
-        expected_wheels = [w for w in expected_wheels if "-cp310-" not in w]
+        # remove CPython 3.10 and above
+        expected_wheels = [w for w in expected_wheels if "-cp31" not in w]
     if manylinux_image in {"manylinux1", "manylinux2014", "manylinux_2_24"}:
         expected_wheels = [w for w in expected_wheels if "-pp" not in w]
     assert set(actual_wheels) == set(expected_wheels)
